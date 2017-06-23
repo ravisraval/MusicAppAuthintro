@@ -1,1 +1,4 @@
-<h1> What's up! <%=current_user.email %> is such a nice email.</h1>
+<h1> What's up! <%= current_user.email %> is such a nice email.</h1>
+
+
+<h4> Click to go to <%= link_to "all bands", bands_url %>.</h4>

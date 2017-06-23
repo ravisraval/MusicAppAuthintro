@@ -1,0 +1,12 @@
+<h2> Welcome to <%= @band.name %>'s page</h2>
+
+<h4> Make a <%= link_to "new album", new_band_album_url(band_id: @band.id) %>.</h4>
+
+<% @band.albums.each do |album| %>
+
+  <%= link_to album.name, album_url(album)  %>
+  <br>
+<% end %>
+
+
+<h4> Back to <%= link_to "all bands", bands_url %>.</h4>

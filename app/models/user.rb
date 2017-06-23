@@ -15,6 +15,8 @@ class User < ApplicationRecord
 
   def reset_session_token!
     self.session_token = User.generate_session_token
+    save
+    session_token
   end
 
   def ensure_session_token
@@ -26,8 +28,6 @@ class User < ApplicationRecord
   end
 
   def valid_password?(password)
-    BCrypt::Password.new(self.password_digest).is_password?(password)
+    BCrypt::Password.new(password_digest).is_password?(password)
   end
-
-
 end

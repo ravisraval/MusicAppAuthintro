@@ -1,0 +1,43 @@
+<% action = (track.persisted? ? track_url(track) : tracks_url) %>
+<% method = (track.persisted? ? :patch : :post ) %>
+
+<form action="<%= action %>" method="post">
+  <input type="hidden" name="_method" value="<%= method %>">
+  <%= auth_token_input %>
+  Name: <input type="text" name="track[name]">
+  <br>
+  <br>
+  Recorded:
+  <br>
+  <br>
+  <input type="radio" name="track[bonus]" id="track_regular" value="False">
+  <label for="track_regular">Regular</label>
+  <br>
+
+  <input type="radio" name="track[bonus]" id="track_bonus" value="True">
+  <label for="track_bonus">Bonus</label>
+  <br>
+  <br>
+
+  Album: <select name="track[album_id]" id="track_album_id">
+
+    <% Album.all.each do |album| %>
+      <option value="<%= album.id %>"><%= album.name %></option>
+    <% end %>
+  </select>
+  <br>
+  <br>
+
+  <label for="track_lyrics">Lyrics:</label>
+  <br>
+  <textarea name="track[lyrics]" id="track)lyrics"></textarea>
+  <br>
+  <br>
+
+
+  <input type="submit">
+
+
+</form>
+<%= link_to "Cancel", bands_url %>
+<%# TODO: somehow link back to album page %>
